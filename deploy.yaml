@@ -12,9 +12,9 @@ spec:
         app: rabbitmq
     spec:
       containers:
-      - name: rabbitmq
-        image: rabbitmq:3.9-management
- 
+        - name: rabbitmq
+          image: rabbitmq:3.9-management
+
 ---
 apiVersion: v1
 kind: Service
@@ -25,11 +25,11 @@ spec:
   selector:
     app: rabbitmq
   ports:
-  - port: 15672
-    targetPort: 15672
-    nodePort: 32000
-    name: "management"
-  - port: 5672
-    targetPort: 5672
-    name: "connection"
-    nodePort: 31672
+    - port: 80
+      targetPort: 15672
+      nodePort: 32000
+      name: "management"
+    - port: 5672
+      targetPort: 5672
+      name: "connection"
+      nodePort: 31672
